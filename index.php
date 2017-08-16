@@ -8,6 +8,7 @@
 	use \Hcode\Page;
 	use \Hcode\PageAdmin;
 	use \Hcode\Model\User;
+	use \Hcode\Model\Category;
 
 	$app = new Slim();
 
@@ -223,6 +224,20 @@
 		]);
 
 		$page -> setTpl("forgot-reset-success");
+
+	});
+
+	$app -> get('/admin/categories', function(){
+
+		User::verifyLogin(); // verifica se a pessoa está logada
+
+		$categories = Category::listAll();
+
+		$page = new PageAdmin();
+
+		$page -> setTpl("categories", array(
+			"categories" => $categories
+		));
 
 	});
 
