@@ -241,6 +241,31 @@
 
 	});
 
+	$app -> get('/admin/categories/create', function(){
+
+		User::verifyLogin(); // verifica se a pessoa está logada
+
+		$page = new PageAdmin();
+
+		$page -> setTpl("categories-create");
+
+	});
+
+	$app -> post('/admin/categories/create', function(){
+
+		User::verifyLogin();
+
+		$category = new Category();
+
+		$category -> setData($_POST);
+
+		$category -> save();
+
+		header("Location: /admin/categories");
+		exit;
+
+	});
+
 
 	$app->run();
 
