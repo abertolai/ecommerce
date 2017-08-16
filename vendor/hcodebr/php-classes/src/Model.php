@@ -19,7 +19,7 @@
 				break;
 
 				case "set":
-					$this  -> values[$fieldName] = $args[0];
+					return $this -> values[$fieldName] = $args[0];
 				break;
 
 			}
